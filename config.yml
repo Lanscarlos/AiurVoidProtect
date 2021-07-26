@@ -1,0 +1,155 @@
+
+# 禁用虚空保护功能的世界
+Disable-Worlds:
+- 'world_nether'
+
+
+
+# 冷却
+Cooldown:
+
+  # 冷却时间内触发保护机制将会开始计数
+  Global: 1200
+  
+  # 保护功能冷却
+  Function: 20
+
+
+# 最大计数值
+# 计数器取值一般为 0 到 MaxCount-1
+# 如
+# MaxCount: 3
+# 计数器取值则为 0 - 2
+MaxCount: 3
+
+
+
+Functions:
+  
+  # 计数器为 0 时使用以下设置
+  '0':
+    # 是否取消虚空伤害
+    Cancel-Void-Damaged: true
+    # 设置玩家的速度矢量，数值越大速度越快
+    # 格式：
+    # Velocity: [ x, y, z ]
+    Velocity: [0, 20, 0]
+    
+    # 是否重置掉落距离
+    # 若不重置掉落距离玩家将会在传送后摔死
+    Reset-Fall-Distance: true
+    
+    # 玩家触发虚空保护时，强制让玩家执行的指令
+    # 支持 PlaceholderAPI 变量
+    # 例如在空岛服设置为
+    # PlayerCommands:
+    # - 'is'
+    # 玩家触发保护机制时会执行is指令传送回岛屿出生点
+    Player-Commands: []
+    
+    # 玩家触发虚空保护时，控制台执行的指令
+    # 支持 PlaceholderAPI 变量
+    # ConsoleCommands:
+    # - 'effect give %player_name% minecraft:levition 10 1'
+    Console-Commands: []
+    
+    # 给予玩家药水效果
+    # 格式：
+    # <药水类型>-<持续时间>-<药水等级>
+    # 如：
+    # Effects:
+    # - 'Slow-200-1'
+    # - 'LEVITATION-200-1'
+    PotionEffect:
+      
+      # 延迟多少Tick后给予药水效果
+      Delay: 35
+      Effects:
+      - 'LEVITATION-200-1'
+      - 'REGENERATION-100-3'
+      - 'DAMAGE_RESISTANCE-200-5'
+  
+    # 向玩家发送信息
+    Message:
+      Common-Message: |-
+          §7[§b系统§7] §a§l咻~
+          §7[§b系统§7] 一股强风将你托起！
+          §7[§b系统§7] 这个世界可是&c&l死亡掉落&7的噢！
+          §7[§b系统§7] 请尽快使用指令§d/is§7回到安全的地方！
+      Action-Message: "null"
+      Title-Message:
+        Enable: true
+        Title: "§d§l芜湖§d！"
+        SubTitle: "§7§l刚才可真是惊险呀！"
+        FadeIn: 5
+        Stay: 60
+        FadeOut: 5
+  
+    # 安全地点传送
+    # 启用后 触发保护机制 会传送到以下设置的地点
+    Safe-Teleport:
+      Enable: false
+      Location:
+        World: "world"
+        X: 0
+        Y: 64
+        Z: 0
+        Yaw: 0
+        Pitch: 0
+  
+  # 计数器为 1 时使用以下设置
+  '1':
+    Cancel-Void-Damaged: false
+    Velocity: [0, 20, 0]
+    Reset-Fall-Distance: true
+    Player-Commands: []
+    Console-Commands: []
+    PotionEffect:
+      Delay: 35
+      Effects:
+      - 'LEVITATION-200-1'
+    Message:
+      Common-Message: |-
+          §7[§b系统§7] §b§l呼~
+          §7[§b系统§7] 第二股强风将你托起！
+          §7[§b系统§7] 掉入虚空可就一切都完啦！
+          §7[§b系统§7] 请尽快使用指令§d/is§7回到安全的地方！
+      Action-Message: "null"
+      Title-Message:
+        Enable: true
+        Title: "§c§l诶§c？！"
+        SubTitle: "§7§l你怎么还在虚空里？"
+        FadeIn: 5
+        Stay: 80
+        FadeOut: 5
+    Safe-Teleport:
+      Enable: false
+  
+  # 计数器为 2 时使用以下设置
+  '2':
+    Cancel-Void-Damaged: false
+    Velocity: [0, 20, 0]
+    Reset-Fall-Distance: true
+    Player-Commands: []
+    Console-Commands: []
+    PotionEffect:
+      Delay: 35
+      Effects:
+      - 'LEVITATION-200-1'
+    Message:
+      Common-Message: |-
+          §7[§b系统§7] §c§l呜~
+          §7[§b系统§7] 最后一股强风将你托起！
+          §7[§b系统§7] 这是§c最后一股强风§7啦！ ！
+          §7[§b系统§7] 请尽快使用指令§d/is§7回到安全的地方！
+      Action-Message: "null"
+      Title-Message:
+        Enable: true
+        Title: "§4!§l警告§4!"
+        SubTitle: "§7§l最后一股风已经消散！"
+        FadeIn: 5
+        Stay: 100
+        FadeOut: 5
+    Safe-Teleport:
+      Enable: false
+  

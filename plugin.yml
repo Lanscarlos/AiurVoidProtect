@@ -1,0 +1,13 @@
+name: AiurVoidProtect
+main: top.lanscarlos.aiurvoidprotect.AiurVoidProtect
+version: 0.1.0
+author: Lanscarlos
+softdepend: [PlaceholderAPI]
+commands:
+  aiurvoidprotect:
+    aliases: [avp]
+permissions:
+  aiurvoidprotect.protect:
+    description: protect player from void
+  aiurvoidprotect.admin:
+    op: true
